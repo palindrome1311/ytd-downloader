@@ -45,7 +45,7 @@ def geturl():
         lis[0]=url
         youtube = etree.HTML(urllib.request.urlopen(url).read())
         video_title = youtube.xpath("//span[@id='eow-title']/@title")
-                lis[1]=video_title
+        lis[1]=video_title
         print(''.join(video_title))
         vt=makeName(video_title)
         et=editName(vt)
