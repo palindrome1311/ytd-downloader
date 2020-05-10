@@ -42,7 +42,7 @@ def geturl():
 
     if request.method == 'POST':
         url = request.form["url"]
-                lis[0]=url
+        lis[0]=url
         youtube = etree.HTML(urllib.request.urlopen(url).read())
         video_title = youtube.xpath("//span[@id='eow-title']/@title")
                 lis[1]=video_title
