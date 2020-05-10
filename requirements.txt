@@ -1,2 +1,3 @@
 flask_bootstrap
 youtube_dl
+gunicorn==19.9.0 
