@@ -11,7 +11,7 @@ import os
 app = Flask(__name__)
 Bootstrap(app)
 
-lis = []
+lis = ["",""]
 
 @app.route('/')
 def hello_world():
