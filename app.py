@@ -12,6 +12,7 @@ app = Flask(__name__)
 Bootstrap(app)
 
 lis = ["",""]
+path=""
 
 @app.route('/')
 def hello_world():
@@ -56,7 +57,6 @@ def success():
 
 
 def vdownload():
-    global path
     video_title = lis[1]
     url=lis[0]
     name = makeName(video_title)+'.webm'
