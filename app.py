@@ -11,6 +11,8 @@ import os
 app = Flask(__name__)
 Bootstrap(app)
 
+global lis = []
+
 @app.route('/')
 def hello_world():
     cwd = os.getcwd()
@@ -40,8 +42,10 @@ def geturl():
 
     if request.method == 'POST':
         url = request.form["url"]
+	lis[0]=url
         youtube = etree.HTML(urllib.request.urlopen(url).read()) 
         video_title = youtube.xpath("//span[@id='eow-title']/@title") 
+	lis[1]=video_title
         print(''.join(video_title))  
         vt=makeName(video_title)
         et=editName(vt)
@@ -53,7 +57,7 @@ def success():
 
 def vdownload():
     global path
-    video_title = "Thanks"
+    video_title = lis[1]
     name = makeName(video_title)+'.webm'
     fname= editName(name)
     download_options = {
@@ -67,11 +71,11 @@ def vdownload():
                 'prefferedquality' : '192',
             }],
         }
-    if url=="":
+    if lis[0]=="":
     	pass
     else:
         with youtube_dl.YoutubeDL(download_options) as dl:   
-            dl.download([url])
+            dl.download([lis[0])
         path = fname
 
 
