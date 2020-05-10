@@ -58,6 +58,7 @@ def success():
 def vdownload():
     global path
     video_title = lis[1]
+    url=lis[0]
     name = makeName(video_title)+'.webm'
     fname= editName(name)
     download_options = {
@@ -71,11 +72,11 @@ def vdownload():
                 'prefferedquality' : '192',
             }],
         }
-    if lis[0]=="":
+    if url=="":
                 pass
     else:
         with youtube_dl.YoutubeDL(download_options) as dl:
-            dl.download([lis[0])
+            dl.download([url])
         path = fname
 
 
