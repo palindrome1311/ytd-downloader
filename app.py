@@ -53,6 +53,7 @@ def success():
 
 def vdownload():
     global path
+    video_title = "Thanks"
     name = makeName(video_title)+'.webm'
     fname= editName(name)
     download_options = {
