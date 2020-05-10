@@ -1,4 +1,4 @@
-from __future__ import unicode_literals 
+from __future__ import unicode_literals
 from flask import Flask, render_template, request
 from flask_bootstrap import Bootstrap
 from flask import send_file
@@ -31,8 +31,8 @@ def makeName(video_title):
     return str[:len(str)-1]
 
 def editName(name):
-	fname=name.replace("|"," ")
-	return fname
+                fname=name.replace("|"," ")
+                return fname
 
 
 @app.route('/geturl', methods = ['POST', 'GET'])
@@ -42,17 +42,17 @@ def geturl():
 
     if request.method == 'POST':
         url = request.form["url"]
-	lis[0]=url
-        youtube = etree.HTML(urllib.request.urlopen(url).read()) 
-        video_title = youtube.xpath("//span[@id='eow-title']/@title") 
-	lis[1]=video_title
-        print(''.join(video_title))  
+                lis[0]=url
+        youtube = etree.HTML(urllib.request.urlopen(url).read())
+        video_title = youtube.xpath("//span[@id='eow-title']/@title")
+                lis[1]=video_title
+        print(''.join(video_title))
         vt=makeName(video_title)
         et=editName(vt)
         return render_template("title.html",data=et)
 
 def success():
-	return render_template("success.html")
+                return render_template("success.html")
 
 
 def vdownload():
@@ -72,9 +72,9 @@ def vdownload():
             }],
         }
     if lis[0]=="":
-    	pass
+                pass
     else:
-        with youtube_dl.YoutubeDL(download_options) as dl:   
+        with youtube_dl.YoutubeDL(download_options) as dl:
             dl.download([lis[0])
         path = fname
 
